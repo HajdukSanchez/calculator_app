@@ -1,28 +1,46 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 
 interface ButtonProps {
   text: string;
   color?: string;
+  isBig?: boolean;
 }
 
-export const Button = ({ text, color = '#9b9b9b' }: ButtonProps) => {
-  const backgroundColor = color;
+export const Button = ({
+  text,
+  isBig = false,
+  color = '#2D2D2D',
+}: ButtonProps) => {
+  const containerStyle = {
+    backgroundColor: color,
+    width: !isBig ? 80 : 180,
+    paddingLeft: !isBig ? 0 : 20,
+  };
+  const textColor: string = color === '#9B9B9B' ? 'black' : 'white';
+  const textAlign: 'center' | 'left' = !isBig ? 'center' : 'left';
 
   return (
-    <View style={{ ...styles.button, backgroundColor }}>
-      <Text style={styles.buttonText}>{text}</Text>
-    </View>
+    <TouchableOpacity>
+      <View style={{ ...styles.button, ...containerStyle }}>
+        <Text
+          style={{
+            ...styles.buttonText,
+            color: textColor,
+            textAlign: textAlign,
+          }}>
+          {text}
+        </Text>
+      </View>
+    </TouchableOpacity>
   );
 };
 
 const styles = StyleSheet.create({
   button: {
     marginHorizontal: 10,
-    width: 80,
     height: 80,
     justifyContent: 'center',
-    alignItems: 'center',
     borderRadius: 100,
   },
   buttonText: {
