@@ -9,8 +9,11 @@ export const CalculatorScreen = () => {
     <View style={styles.containerResult}>
       <Text style={styles.textLastResult}>1550000</Text>
       <Text style={styles.textResult}>1550000</Text>
-      <View>
-        <Button></Button>
+      <View style={styles.buttonsContainer}>
+        <Button text="c"></Button>
+        <Button text="+/-" color="#ff9427"></Button>
+        <Button text="del" color="#ff9427"></Button>
+        <Button text="/" color="#2d2d2d"></Button>
       </View>
     </View>
   );

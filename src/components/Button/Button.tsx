@@ -1,12 +1,34 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 
-import { styles } from '../../theme/AppTheme';
+interface ButtonProps {
+  text: string;
+  color?: string;
+}
 
-export const Button = () => {
+export const Button = ({ text, color = '#9b9b9b' }: ButtonProps) => {
+  const backgroundColor = color;
+
   return (
-    <View style={styles.button}>
-      <Text style={styles.buttonText}>1</Text>
+    <View style={{ ...styles.button, backgroundColor }}>
+      <Text style={styles.buttonText}>{text}</Text>
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  button: {
+    marginHorizontal: 10,
+    width: 80,
+    height: 80,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 100,
+  },
+  buttonText: {
+    padding: 10,
+    fontSize: 30,
+    color: 'black',
+    fontWeight: `300`,
+  },
+});
