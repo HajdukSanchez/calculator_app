@@ -1,6 +1,8 @@
 import React, { memo } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 
+import { ButtonColor } from '../../enums/enums';
+
 interface ButtonProps {
   text: string;
   color?: string;
@@ -12,15 +14,16 @@ const Button = memo(function Button({
   text,
   onPress,
   isBig = false,
-  color = '#2D2D2D',
+  color = ButtonColor.BLACK,
 }: ButtonProps) {
   const containerStyle = {
     backgroundColor: color,
     width: !isBig ? 80 : 180,
     paddingLeft: !isBig ? 0 : 20,
   };
-  const textColor: string = color === '#9B9B9B' ? 'black' : 'white';
+  const textColor: string = color === ButtonColor.GREY ? 'black' : 'white';
   const textAlign: 'center' | 'left' = !isBig ? 'center' : 'left';
+	console.log(`Button ${text}`);
 
   return (
     <TouchableOpacity onPress={() => onPress(text)}>
