@@ -11,6 +11,7 @@ export const styles = StyleSheet.create({
     paddingHorizontal: 10,
   },
   textResult: {
+		marginBottom: 10,
     color: 'white',
     fontSize: 60,
     textAlign: 'right',
