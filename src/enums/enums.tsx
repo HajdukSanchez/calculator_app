@@ -44,6 +44,7 @@ export enum SpecialCharacters {
   DELETE = 'del',
   MINUS_ZERO = '-0',
   FILM_SCRIPT = '-',
+	NAN = 'NaN',
 }
 
 /**

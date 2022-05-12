@@ -72,6 +72,29 @@ export const CalculatorScreen = () => {
     setResult(Numbers.ZERO);
   };
 
+  const calculate = () => {
+    let operationResult: number | string = Numbers.ZERO;
+    switch (lastOperation.current) {
+      case Operators.ADDITION:
+        operationResult = Number(lastNumber) + Number(result);
+        break;
+      case Operators.SUBTRACTION:
+        operationResult = Number(lastNumber) - Number(result);
+        break;
+      case Operators.MULTIPLICATION:
+        operationResult = Number(lastNumber) * Number(result);
+        break;
+      case Operators.DIVISION:
+        // 'Result' has the divider when we click the action
+        result === Numbers.ZERO ? (operationResult = SpecialCharacters.NAN) : (operationResult = Number(lastNumber) / Number(result));
+        break;
+      default:
+        return;
+    }
+    setResult(operationResult.toString());
+    setLastNumber(Numbers.ZERO);
+  };
+
   console.log('refactor');
 
   return (
@@ -107,7 +130,7 @@ export const CalculatorScreen = () => {
       <View style={styles.buttonsContainer}>
         <Button text={Numbers.ZERO} onPress={createNumberFormat} isBig></Button>
         <Button text={SpecialCharacters.DOT} onPress={createNumberFormat}></Button>
-        <Button text={SpecialCharacters.EQUAL} color={ButtonColor.ORANGE} onPress={setAction}></Button>
+        <Button text={SpecialCharacters.EQUAL} color={ButtonColor.ORANGE} onPress={calculate}></Button>
       </View>
     </View>
   );
